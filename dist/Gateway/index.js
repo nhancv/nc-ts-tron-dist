@@ -78,7 +78,7 @@ var Gateway = /** @class */ (function (_super) {
     }
     Gateway.prototype.start = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var app, port, morganFormat, aboutController, rewardController, http, hostname;
+            var app, port, morganFormat, aboutController, rewardController, http;
             return __generator(this, function (_a) {
                 app = express_1.default();
                 port = parseInt(process.env.PORT || '7777');
@@ -138,9 +138,32 @@ var Gateway = /** @class */ (function (_super) {
                     return res.status(goodResponse.code).json(goodResponse);
                 });
                 http = require('http').createServer(app);
-                hostname = process.env.NODE_ENV == 'dev' ? 'localhost' : 'localhost';
+                // const io = require('socket.io')(http);
+                // io.on('connection', (socket) => {
+                //   console.log('A user connected');
+                //   socket.on('message', (data: any) => {
+                //     console.log('Server received:', data);
+                //   });
+                // });
+                /**
+                 * Test socket client
+                 */
+                // const socketClient = require('socket.io-client')(`http://localhost:${port}`);
+                // socketClient.on('connect', () => {
+                //   console.log('Client connected');
+                //   socketClient.emit('message', 'Hello from client');
+                // });
+                // socketClient.on('event', (data) => {
+                //   console.log('Event', data);
+                // });
+                // socketClient.on('disconnect', () => {
+                //   console.log('Client disconnect');
+                // });
+                /**
+                 * Start listen only on localhost domain
+                 */
                 try {
-                    http.listen(port, hostname, function () {
+                    http.listen(port, function () {
                         Log_1.default.info("Server " + process.env.NODE_ENV + " listening at port " + port);
                     });
                 }
