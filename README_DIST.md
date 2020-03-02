@@ -62,7 +62,7 @@ sudo yum install -y git
 curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 sudo apt install -y nodejs
 
-#Centos
+# Centos
 curl -sL https://rpm.nodesource.com/setup_12.x | sudo bash -
 sudo yum install -y nodejs
 ```
