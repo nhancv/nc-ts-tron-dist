@@ -48,21 +48,39 @@ Response:
 
 ## Installation
 
+- Install git
+```
+# Ubuntu
+sudo apt install -y git
+
+# Centos
+sudo yum install -y git
+```
 - Install node
 ```
+# Ubuntu
 curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
-sudo apt-get install -y nodejs
+sudo apt install -y nodejs
+
+#Centos
+curl -sL https://rpm.nodesource.com/setup_12.x | sudo bash -
+sudo yum install -y nodejs
 ```
 
 - Install node process management
 ```
-npm install pm2 -g
+sudo npm install pm2 -g
 
 # Install pm2 rotate logging
 pm2 install pm2-logrotate
 ```
 
-- Config project: update value on `.env` (refer to `.env_sample`)
+- Clone project, cd to source, install libs
+```
+npm i
+```
+
+- Config project: update value on `.env` (refer to `.env_sample`). If the `.env` file is not exist, just create one.
 
 Example configuration for testing only
 ```
@@ -77,6 +95,15 @@ TRON_OWNER_PRIVATE=D6D56719D7B0FC38558C81A4201984A8A8E23605AC2E1E4F3BE90BFD55BC6
 ```
 
 - Update `~/.bash_aliases`
+
+* For Centos: Please note that `~/.bash_aliases` file only works if the following line presents in the `~/.bashrc` file. Just append at the end of the `~/.bashrc`
+```
+if [ -f ~/.bash_aliases ]; then
+. ~/.bash_aliases
+fi
+```
+
+* `~/.bash_aliases` content
 ```
 alias pm2logs.home='cd ~/.pm2/logs/'
 
@@ -92,6 +119,7 @@ alias bash.up="source ~/.bash_aliases"
 alias file.bash="nano ~/.bash_aliases"
 ```
 
+
 ## Maintenance
 
 ```
@@ -101,9 +129,9 @@ $ tronreward.reload
 # Start application in the first time (dont have any starting instance yet)
 $ tronreward.start
 
+# View app log
+$ tronreward.logs
+
 # Full restart application
 $ tronreward.restart
-
-# View app log:
-$ tronreward.logs
 ```
