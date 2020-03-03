@@ -10,7 +10,9 @@ This project provide an api collection to create TRON wallet, sending TRX asset
 Method: GET
 Endpoint: /api/newwallet
 
-Example: GET localhost:7777/api/newwallet
+Example:
+curl -X GET -H 'token: 1234' -i 'http://localhost:7777/api/newwallet'
+
 Response:
 {
     "code": 200,
@@ -34,7 +36,9 @@ Body: Content-Type: application/json
 	"amount": 0.1
 }
 
-Example: POST localhost:7777/api/sendreward/TF7cUfaQnK5Z5HK8kuhkW99uMSjD1gZaKs
+Example:
+curl -X POST -H 'Content-Type: application/json' -H 'token: 1234' -i 'http://localhost:7777/api/sendreward/TF7cUfaQnK5Z5HK8kuhkW99uMSjD1gZaKs' --data '{"amount":0.1}'
+
 Response:
 {
     "code": 200,
